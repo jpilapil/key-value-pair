@@ -16,7 +16,7 @@ export default function Landing() {
             {/* first login card */}
             <div id="inside-card" className="card mt-6">
               <div id="sign-up-card" className="card-body">
-                <h2 className="card-title ">Nice to meet you</h2>
+                <h2 className="card-title ">Hello, world</h2>
                 <p className="card-text-landing mb-6">
                   Sign up for Key Value Pairs
                 </p>
@@ -51,9 +51,9 @@ export default function Landing() {
                       Technologies I'm interested in
                     </label>
                     <input
-                      type="password"
+                      type="technologies"
                       className="form-control input-outline border"
-                      id="inputPassword1"
+                      id="technologyInterest"
                     />
                   </div>
                   {/* gender */}
@@ -65,11 +65,11 @@ export default function Landing() {
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="inlineRadioOptions"
-                        id="inlineRadio1"
+                        name="genderSelect"
+                        id="genderMale"
                         value="option1"
                       />
-                      <label class="form-check-label" htmlFor="inlineRadio1">
+                      <label class="form-check-label" htmlFor="genderMale">
                         Male
                       </label>
                     </div>
@@ -77,11 +77,11 @@ export default function Landing() {
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="inlineRadioOptions"
-                        id="inlineRadio2"
+                        name="genderSelect"
+                        id="genderFemale"
                         value="option2"
                       />
-                      <label class="form-check-label" htmlFor="inlineRadio2">
+                      <label class="form-check-label" htmlFor="genderFemale">
                         Female
                       </label>
                     </div>
@@ -89,11 +89,11 @@ export default function Landing() {
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="inlineRadioOptions"
-                        id="inlineRadio3"
+                        name="genderSelect"
+                        id="genderNA"
                         value="option3"
                       />
-                      <label class="form-check-label" htmlFor="inlineRadio3">
+                      <label class="form-check-label" htmlFor="genderNA">
                         Rather not say
                       </label>
                     </div>
@@ -109,6 +109,25 @@ export default function Landing() {
               </div>
             </div>
           </div>
+
+          {/* <input
+                        type="radio"
+                        id="viewModeAll"
+                        name="viewMode"
+                        className="custom-control-input"
+                        // if favorites radio is not checked, then this input is checked
+                        checked={!this.state.isFavoritesChecked}
+                        // in the event that show all radio button is clicked/changed, run filterFuncs function
+                        onChange={(e) => {
+                           this.filterFuncs(e);
+                        }}
+                     />
+                     <label
+                        className="custom-control-label"
+                        htmlFor="viewModeAll"
+                     >
+                        Show All
+                     </label> */}
 
           {/* card 2 */}
           <div className="col-lg-6 offset-lg-0  col-md-8 offset-md-2 col-10 offset-1 col-xl-5 offset-xl-1">
