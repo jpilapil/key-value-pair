@@ -61,39 +61,42 @@ export default function Landing() {
                     Please specify your gender
                   </label>
                   <div className="row ml-1">
-                    <div class="form-check form-check-inline">
+                    <div className="form-check form-check-inline">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="radio"
                         name="genderSelect"
                         id="genderMale"
                         value="option1"
                       />
-                      <label class="form-check-label" htmlFor="genderMale">
+                      <label className="form-check-label" htmlFor="genderMale">
                         Male
                       </label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div className="form-check form-check-inline">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="radio"
                         name="genderSelect"
                         id="genderFemale"
                         value="option2"
                       />
-                      <label class="form-check-label" htmlFor="genderFemale">
+                      <label
+                        className="form-check-label"
+                        htmlFor="genderFemale"
+                      >
                         Female
                       </label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div className="form-check form-check-inline">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="radio"
                         name="genderSelect"
                         id="genderNA"
                         value="option3"
                       />
-                      <label class="form-check-label" htmlFor="genderNA">
+                      <label className="form-check-label" htmlFor="genderNA">
                         Rather not say
                       </label>
                     </div>
