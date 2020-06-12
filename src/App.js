@@ -1,11 +1,17 @@
 import React from "react";
-import "./style/master.scss";
+import "./style/master.scss"; // global styles
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Landing from "./components/pages/Landing";
+import NotFound from "./components/pages/NotFound";
 
 function App() {
   return (
-    <div>
-      <h1 className="text-primary">suh dude</h1>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Landing} />
+        <Route component={NotFound} />
+      </Switch>
+    </Router>
   );
 }
 
