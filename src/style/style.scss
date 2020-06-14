@@ -1,3 +1,14 @@
+// BAKCGROUND
+body {
+  background-color: $background;
+}
+
+// LABEL
+// for male/female/rather not say
+.form-check-label {
+  font-size: 15px;
+}
+
 // TEXT
 .text-brand {
   font-family: $font-family-brand;
@@ -32,7 +43,7 @@
 
 // CARDS
 .card {
-  border: 0;
+  border: 1px solid $comment;
 }
 
 .card-body {
@@ -51,16 +62,14 @@
 }
 
 .card-title {
-  color: $gray-800;
+  color: $plain;
 }
 
 .card-text-landing {
-  color: $gray-500;
   font-size: $font-size-base;
   margin-bottom: 1rem;
 }
 .sign-up-text {
-  color: $success;
   font-size: $font-size-base;
   margin-bottom: 1rem;
 }

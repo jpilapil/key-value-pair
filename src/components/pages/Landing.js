@@ -7,7 +7,9 @@ export default function Landing() {
         {/* logo */}
         <div className="row mt-6">
           <div className="col-12">
-            <h1 className="logo-text text-center">Key Value Pairs</h1>
+            <h1 className="logo-text text-secondary text-center">
+              Key Value Pairs
+            </h1>
           </div>
         </div>
         {/* card 1 */}
@@ -17,23 +19,23 @@ export default function Landing() {
             <div id="inside-card" className="card mt-6">
               <div id="sign-up-card" className="card-body">
                 <h2 className="card-title ">Hello, world</h2>
-                <p className="card-text-landing mb-6">
+                {/* <p className="card-text-landing mb-6">
                   Sign up for Key Value Pairs
                 </p>
                 <button
                   id="sign-up-button"
                   type="button"
-                  className="btn btn-success btn-lg btn-block btn-lg landing-button"
+                  className="btn btn-primary btn-lg btn-block btn-lg landing-button"
                 >
                   Sign up
-                </button>
+                </button> */}
                 {/* second login card */}
                 <div id="sign-up-card2">
-                  <p className="card-text-landing sign-up-text">
-                    Let's get coding.
+                  <p className="card-text-landing sign-up-text text-success">
+                    Create a new account.
                   </p>
                   <div className="form-group">
-                    <label className="text-muted" htmlFor="inputEmail1">
+                    <label className="text-light" htmlFor="inputEmail1">
                       Username
                     </label>
                     <input
@@ -47,7 +49,7 @@ export default function Landing() {
 
                   {/* tech interested in */}
                   <div className="form-group mt-3">
-                    <label className="text-muted" htmlFor="interestedTech">
+                    <label className="text-light" htmlFor="interestedTech">
                       Technologies I'm interested in
                     </label>
                     <input
@@ -57,7 +59,7 @@ export default function Landing() {
                     />
                   </div>
                   {/* gender */}
-                  <label className="text-muted" htmlFor="genderSelect">
+                  <label className="text-light" htmlFor="genderSelect">
                     Please specify your gender
                   </label>
                   <div className="row ml-1">
@@ -69,7 +71,10 @@ export default function Landing() {
                         id="genderMale"
                         value="option1"
                       />
-                      <label className="form-check-label" htmlFor="genderMale">
+                      <label
+                        className="form-check-label text-dark"
+                        htmlFor="genderMale"
+                      >
                         Male
                       </label>
                     </div>
@@ -82,7 +87,7 @@ export default function Landing() {
                         value="option2"
                       />
                       <label
-                        className="form-check-label"
+                        className="form-check-label text-dark"
                         htmlFor="genderFemale"
                       >
                         Female
@@ -96,7 +101,10 @@ export default function Landing() {
                         id="genderNA"
                         value="option3"
                       />
-                      <label className="form-check-label" htmlFor="genderNA">
+                      <label
+                        className="form-check-label text-dark"
+                        htmlFor="genderNA"
+                      >
                         Rather not say
                       </label>
                     </div>
@@ -104,7 +112,7 @@ export default function Landing() {
                   <button
                     href="#"
                     id="letsGo"
-                    className="btn btn-success btn-lg btn-block btn-lg landing-button"
+                    className="btn btn-tertiary btn-lg btn-block btn-lg landing-button"
                   >
                     Continue
                   </button>
@@ -136,13 +144,13 @@ export default function Landing() {
           <div className="col-lg-6 offset-lg-0  col-md-8 offset-md-2 col-10 offset-1 col-xl-5 offset-xl-1">
             <div id="inside-card" className="card mt-6">
               <div className="card-body">
-                <h2 className="card-title ">Welcome back</h2>
-                <p className="card-text-landing">
+                <h2 className="card-title">Welcome back</h2>
+                <p className="card-text-landing text-success">
                   Log in with your email address and password.
                 </p>
 
                 <div className="form-group">
-                  <label className="text-muted" htmlFor="inputEmail2">
+                  <label className="text-light" htmlFor="inputEmail2">
                     Email address
                   </label>
                   <input
@@ -155,7 +163,7 @@ export default function Landing() {
                   Please enter your email address
                 </div>
                 <div className="form-group">
-                  <label className="text-muted" htmlFor="inputPassword2">
+                  <label className="text-light" htmlFor="inputPassword2">
                     Password
                   </label>
                   <input
@@ -181,7 +189,7 @@ export default function Landing() {
                   <button
                     href="#"
                     id="logIn"
-                    className="btn btn-success bt-lg  float-right landing-button"
+                    className="btn btn-tertiary bt-lg  float-right landing-button"
                   >
                     Log in
                   </button>
