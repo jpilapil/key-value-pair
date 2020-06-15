@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Navbar, Nav } from "react-bootstrap";
+// https://react-bootstrap.github.io/components/navbar/
 
 export default function Navigation() {
   const url = window.location.pathname;
@@ -16,36 +18,79 @@ export default function Navigation() {
   }
 
   return (
-    <div
-      className="btn-group d-inline-flex float-right mr-3"
-      role="navigation"
-      aria-label="navigation"
+    <Navbar
+      collapseOnSelect
+      expand="md"
+      bg="background"
+      variant="dark"
+      className="pt-0"
     >
-      <Link
-        to="/connect"
-        type="button"
-        className={`btn btn-background text-light navigation-button ${tabActiveOnConnect(
-          url
-        )}`}
-      >
-        Connect
-      </Link>
-      <Link
-        to="/user"
-        type="button"
-        className={`btn btn-background text-light navigation-button ${tabActiveOnProfile(
-          url
-        )}`}
-      >
-        My Profile
-      </Link>
-      <Link
-        to="/"
-        type="button"
-        className={`btn btn-background text-light navigation-button`}
-      >
-        Log Out
-      </Link>
-    </div>
+      <Navbar.Brand className="text-brand text-success" href="/profile">
+        Key:Value Pairs
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="ml-auto ">
+          <Link
+            to="/connect"
+            type="button"
+            className={`btn btn-background text-light navigation-button ${tabActiveOnConnect(
+              url
+            )}`}
+          >
+            Connect
+          </Link>
+          <Link
+            to="/profile"
+            type="button"
+            className={`btn btn-background text-light navigation-button ${tabActiveOnProfile(
+              url
+            )}`}
+          >
+            My Profile
+          </Link>
+          <Link
+            to="/"
+            type="button"
+            className={`btn btn-background text-light navigation-button`}
+          >
+            Log Out
+          </Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+    // <div className="row ml-auto">
+    //   <div
+    //     className="btn-group d-inline-flex ml-auto mr-3"
+    //     role="navigation"
+    //     aria-label="navigation"
+    //   >
+    //     <Link
+    //       to="/connect"
+    //       type="button"
+    //       className={`btn btn-background text-light navigation-button ${tabActiveOnConnect(
+    //         url
+    //       )}`}
+    //     >
+    //       Connect
+    //     </Link>
+    //     <Link
+    //       to="/user"
+    //       type="button"
+    //       className={`btn btn-background text-light navigation-button ${tabActiveOnProfile(
+    //         url
+    //       )}`}
+    //     >
+    //       My Profile
+    // </Link>
+    // <Link
+    //   to="/"
+    //   type="button"
+    //   className={`btn btn-background text-light navigation-button`}
+    // >
+    //   Log Out
+    // </Link>
+    //   </div>
+    // </div>
   );
 }

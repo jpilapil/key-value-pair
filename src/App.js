@@ -3,6 +3,7 @@ import "./style/master.scss"; // global styles
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Landing from "./components/pages/Landing";
 import Connect from "./components/pages/Connect";
+import Profile from "./components/pages/Profile";
 import NotFound from "./components/pages/NotFound";
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={Landing} />
-        <Route exaxct path="/connect" component={Connect} />
+        <Route exact path="/connect" component={Connect} />
+        <Route exact path="/profile" component={Profile} />
         <Route component={NotFound} />
       </Switch>
     </Router>

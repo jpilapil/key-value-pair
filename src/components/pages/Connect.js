@@ -7,7 +7,10 @@ export default function Connect() {
   return (
     <AppTemplate>
       <div>
-        <div className=" mt-9">
+        <div className=" mt-8">
+          <h2 className="text-secondary text-center mb-8">
+            Connect with other users
+          </h2>
           <div className="row">
             <OtherUser />
             <OtherUser />

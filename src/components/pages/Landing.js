@@ -14,7 +14,7 @@ export default function Landing() {
           </div>
         </div>
         {/* card 1 */}
-        <div className="row mt-5">
+        <div className="row mt-9">
           <div className="col-lg-6 offset-lg-0 col-md-8 offset-md-2 col-10 offset-1 col-xl-5 offset-xl-1">
             {/* first login card */}
             <div id="inside-card" className="card mt-6">
