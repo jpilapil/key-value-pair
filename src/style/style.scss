@@ -42,9 +42,9 @@ body {
 }
 
 // CARDS
-.card {
-  border: 1px solid $comment;
-}
+// .card {
+//   border: 1px solid $comment;
+// }
 
 .card-body {
   font-family: $font-family-serif;
@@ -95,7 +95,7 @@ textarea {
 
 #login-button {
   float: right;
-  background-color: $blue-600;
+  background-color: $tertiary;
 }
 
 // fixes card padding issue on login page
