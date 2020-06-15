@@ -8,7 +8,7 @@ export default function Landing() {
         <div className="row mt-6">
           <div className="col-12">
             <h1 className="logo-text text-secondary text-center">
-              Key Value Pairs
+              Key:Value Pairs
             </h1>
           </div>
         </div>
