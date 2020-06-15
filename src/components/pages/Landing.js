@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Landing() {
   return (
@@ -109,13 +110,13 @@ export default function Landing() {
                       </label>
                     </div>
                   </div>
-                  <button
-                    href="#"
+                  <Link
+                    to="/connect"
                     id="letsGo"
                     className="btn btn-tertiary btn-lg btn-block btn-lg landing-button"
                   >
                     Continue
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -186,13 +187,13 @@ export default function Landing() {
                     Your password must be at least 9 characters
                   </div>
 
-                  <button
-                    href="#"
+                  <Link
+                    to="/connect"
                     id="logIn"
                     className="btn btn-tertiary bt-lg  float-right landing-button"
                   >
                     Log in
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

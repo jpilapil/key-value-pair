@@ -30,15 +30,19 @@ body {
 
 .navigation-button {
   font-weight: $font-weight-normal;
+  border-radius: 0;
+}
+.navigation-button:hover {
+  background-color: $lighterbackground;
 }
 
 // TABS
-.tab-separator {
-  border-left: 1px $gray-800 solid;
-}
+// .tab-separator {
+//   border-left: 1px $gray-800 solid;
+// }
 
 .tab-active {
-  background-color: $gray-800;
+  background-color: $lighterbackground;
 }
 
 // CARDS
