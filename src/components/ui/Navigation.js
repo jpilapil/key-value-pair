@@ -33,7 +33,6 @@ export default function Navigation() {
         <Nav className="ml-auto ">
           <Link
             to="/connect"
-            type="button"
             className={`btn btn-background text-light navigation-button ${tabActiveOnConnect(
               url
             )}`}
@@ -42,7 +41,6 @@ export default function Navigation() {
           </Link>
           <Link
             to="/profile"
-            type="button"
             className={`btn btn-background text-light navigation-button ${tabActiveOnProfile(
               url
             )}`}
@@ -51,7 +49,6 @@ export default function Navigation() {
           </Link>
           <Link
             to="/"
-            type="button"
             className={`btn btn-background text-light navigation-button`}
           >
             Log Out

@@ -6,15 +6,15 @@ export default function Landing() {
     <div>
       <div className="container">
         {/* logo */}
-        <div className="row mt-6">
+        <div className="row mt-4">
           <div className="col-12">
-            <h1 className="logo-text text-secondary text-center">
+            <h1 className="logo-text text-success text-center">
               Key:Value Pairs
             </h1>
           </div>
         </div>
         {/* card 1 */}
-        <div className="row mt-9">
+        <div className="row mt-7">
           <div className="col-lg-6 offset-lg-0 col-md-8 offset-md-2 col-10 offset-1 col-xl-5 offset-xl-1">
             {/* first login card */}
             <div id="inside-card" className="card mt-6">
@@ -32,7 +32,7 @@ export default function Landing() {
                 </button> */}
                 {/* second login card */}
                 <div id="sign-up-card2">
-                  <p className="card-text-landing sign-up-text text-success">
+                  <p className="card-text-landing sign-up-text text-secondary">
                     Create a new account.
                   </p>
                   <div className="form-group">
@@ -73,7 +73,7 @@ export default function Landing() {
                         value="option1"
                       />
                       <label
-                        className="form-check-label text-dark"
+                        className="form-check-label text-lightest"
                         htmlFor="genderMale"
                       >
                         Male
@@ -88,7 +88,7 @@ export default function Landing() {
                         value="option2"
                       />
                       <label
-                        className="form-check-label text-dark"
+                        className="form-check-label text-lightest"
                         htmlFor="genderFemale"
                       >
                         Female
@@ -103,7 +103,7 @@ export default function Landing() {
                         value="option3"
                       />
                       <label
-                        className="form-check-label text-dark"
+                        className="form-check-label text-lightest"
                         htmlFor="genderNA"
                       >
                         Rather not say
@@ -142,11 +142,11 @@ export default function Landing() {
                      </label> */}
 
           {/* card 2 */}
-          <div className="col-lg-6 offset-lg-0  col-md-8 offset-md-2 col-10 offset-1 col-xl-5 offset-xl-1">
+          <div className="col-lg-6 offset-lg-0  col-md-8 offset-md-2 col-10 offset-1 col-xl-5 offset-xl-1 ">
             <div id="inside-card" className="card mt-6">
               <div className="card-body">
                 <h2 className="card-title">Welcome back</h2>
-                <p className="card-text-landing text-success">
+                <p className="card-text-landing text-secondary">
                   Log in with your email address and password.
                 </p>
 
