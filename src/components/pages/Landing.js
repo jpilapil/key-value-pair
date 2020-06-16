@@ -1,4 +1,5 @@
 import React from "react";
+import landingLogo from "../../img/kvp-logo.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,15 +13,20 @@ export default function Landing() {
     <div>
       <div className="container">
         {/* logo */}
-        <div className="row mt-4">
-          <div className="col-12">
-            <h1 className="logo-text text-success text-center">
+        <div className="row mt-9">
+          <div className="col-12 text-center">
+            {/* <h1 className="logo-text text-success text-center">
               Key:Value Pairs
-            </h1>
+            </h1> */}
+            <img
+              src={landingLogo}
+              alt="Key Value Pairs Landing Logo"
+              className="img-fluid"
+            />
           </div>
         </div>
         {/* card 1 */}
-        <div className="row mt-7">
+        <div className="row mt-9">
           <div className="col-lg-6 offset-lg-0 col-md-8 offset-md-2 col-10 offset-1 col-xl-5 offset-xl-1">
             {/* first login card */}
             <div id="inside-card" className="card mt-6">
@@ -209,29 +215,21 @@ export default function Landing() {
 
         <div className="row mt-7 ">
           <div className="col-8 offset-2 col-lg-3 offset-lg-1 col-md-3 offset-md-1 col-sm-6 offset-sm-3  text-center mt-7">
-            <FontAwesomeIcon
-              icon={faUserFriends}
-              size="4x"
-              className="text-light"
-            />
+            <FontAwesomeIcon icon={faUserFriends} className="fa-icon" />
             <p className="mt-5 text-dark">
               Easily connect with other developers that share common
               technological interests.
             </p>
           </div>
-          <div className="col-8 offset-2 col-lg-3 offset-lg-1 col-md-3 offset-md-1 col-sm-6 offset-sm-3  text-center mt-6">
-            <FontAwesomeIcon
-              icon={faCodeBranch}
-              size="4x"
-              className="text-light"
-            />
+          <div className="col-8 offset-2 col-lg-3 offset-lg-1 col-md-3 offset-md-1 col-sm-6 offset-sm-3  text-center mt-7">
+            <FontAwesomeIcon icon={faCodeBranch} className="fa-icon" />
             <p className="mt-5 text-dark">
               Increase code quality as well as learn and transfer new skills by
               collaborating on the same project.
             </p>
           </div>
           <div className="col-8 offset-2 col-lg-3 offset-lg-1 col-md-3 offset-md-1 col-sm-6 offset-sm-3  text-center mt-7">
-            <FontAwesomeIcon icon={faCogs} size="4x" className="text-light" />
+            <FontAwesomeIcon icon={faCogs} className="fa-icon" />
             <p className="mt-5 text-dark">
               Stay up to date with hunderds of technologies to choose from.
             </p>

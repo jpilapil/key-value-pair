@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import kvpIcon from "../../icons/kvp-icon.png";
 import { Navbar, Nav } from "react-bootstrap";
 // https://react-bootstrap.github.io/components/navbar/
 
@@ -26,7 +27,16 @@ export default function Navigation() {
       className="pt-0"
     >
       <Navbar.Brand className="text-brand text-success" href="/profile">
-        Key:Value Pairs
+        <img
+          src={kvpIcon}
+          alt="Key Value Pairs Landing Logo"
+          className="img-fluid"
+        />
+        {/* <img
+          className="kvp-logo"
+          src={smallLogo}
+          alt="Key Value Pairs Landing Logo"
+        /> */}
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
