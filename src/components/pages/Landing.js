@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserFriends } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserFriends,
+  faCodeBranch,
+  faCogs,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Landing() {
   return (
@@ -13,11 +17,6 @@ export default function Landing() {
             <h1 className="logo-text text-success text-center">
               Key:Value Pairs
             </h1>
-            <FontAwesomeIcon
-              icon={faUserFriends}
-              size="4x"
-              className="faicons"
-            />
           </div>
         </div>
         {/* card 1 */}
@@ -128,9 +127,8 @@ export default function Landing() {
               </div>
             </div>
           </div>
-        </div>
 
-        {/* <input
+          {/* <input
                         type="radio"
                         id="viewModeAll"
                         name="viewMode"
@@ -149,8 +147,8 @@ export default function Landing() {
                         Show All
                      </label> */}
 
-        {/* card 2 */}
-        <div className="row">
+          {/* card 2 */}
+
           <div className="col-lg-6 offset-lg-0  col-md-8 offset-md-2 col-10 offset-1 col-xl-5 offset-xl-1 ">
             <div id="inside-card" className="card mt-6">
               <div className="card-body">
@@ -206,6 +204,36 @@ export default function Landing() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="row mt-9 ">
+          <div className="col-3 offset-1 text-center">
+            <FontAwesomeIcon
+              icon={faUserFriends}
+              size="4x"
+              className="faicons"
+            />
+            <p className="mt-6">
+              Easily connect with other developers that share the technological
+              interests.
+            </p>
+          </div>
+          <div className="col-3 offset-1 text-center">
+            <FontAwesomeIcon
+              icon={faCodeBranch}
+              size="4x"
+              className="faicons"
+            />
+            <p className="mt-6">
+              Increase code quality as well as learn and transfer new skills by
+              collaborating on the same project.
+            </p>
+          </div>
+          <div className="col-3 offset-1 text-center">
+            <FontAwesomeIcon icon={faCogs} size="4x" className="faicons" />
+            <p className="mt-6">
+              Stay up to date with hunderds of technologies to choose from.
+            </p>
           </div>
         </div>
       </div>
