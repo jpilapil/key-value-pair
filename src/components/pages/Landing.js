@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserFriends } from "@fortawesome/free-solid-svg-icons";
 
 export default function Landing() {
   return (
@@ -11,6 +13,11 @@ export default function Landing() {
             <h1 className="logo-text text-success text-center">
               Key:Value Pairs
             </h1>
+            <FontAwesomeIcon
+              icon={faUserFriends}
+              size="4x"
+              className="faicons"
+            />
           </div>
         </div>
         {/* card 1 */}
@@ -121,8 +128,9 @@ export default function Landing() {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* <input
+        {/* <input
                         type="radio"
                         id="viewModeAll"
                         name="viewMode"
@@ -141,7 +149,8 @@ export default function Landing() {
                         Show All
                      </label> */}
 
-          {/* card 2 */}
+        {/* card 2 */}
+        <div className="row">
           <div className="col-lg-6 offset-lg-0  col-md-8 offset-md-2 col-10 offset-1 col-xl-5 offset-xl-1 ">
             <div id="inside-card" className="card mt-6">
               <div className="card-body">
