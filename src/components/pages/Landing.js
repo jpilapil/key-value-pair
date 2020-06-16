@@ -206,32 +206,33 @@ export default function Landing() {
             </div>
           </div>
         </div>
-        <div className="row mt-9 ">
-          <div className="col-3 offset-1 text-center">
+
+        <div className="row mt-7 ">
+          <div className="col-8 offset-2 col-lg-3 offset-lg-1 col-md-3 offset-md-1 col-sm-6 offset-sm-3  text-center mt-7">
             <FontAwesomeIcon
               icon={faUserFriends}
               size="4x"
-              className="faicons"
+              className="text-light"
             />
-            <p className="mt-6">
-              Easily connect with other developers that share the technological
-              interests.
+            <p className="mt-5 text-dark">
+              Easily connect with other developers that share common
+              technological interests.
             </p>
           </div>
-          <div className="col-3 offset-1 text-center">
+          <div className="col-8 offset-2 col-lg-3 offset-lg-1 col-md-3 offset-md-1 col-sm-6 offset-sm-3  text-center mt-6">
             <FontAwesomeIcon
               icon={faCodeBranch}
               size="4x"
-              className="faicons"
+              className="text-light"
             />
-            <p className="mt-6">
+            <p className="mt-5 text-dark">
               Increase code quality as well as learn and transfer new skills by
               collaborating on the same project.
             </p>
           </div>
-          <div className="col-3 offset-1 text-center">
-            <FontAwesomeIcon icon={faCogs} size="4x" className="faicons" />
-            <p className="mt-6">
+          <div className="col-8 offset-2 col-lg-3 offset-lg-1 col-md-3 offset-md-1 col-sm-6 offset-sm-3  text-center mt-7">
+            <FontAwesomeIcon icon={faCogs} size="4x" className="text-light" />
+            <p className="mt-5 text-dark">
               Stay up to date with hunderds of technologies to choose from.
             </p>
           </div>

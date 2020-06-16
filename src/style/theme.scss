@@ -35,6 +35,7 @@ $tertiary: $cyan;
 $success: $lime;
 $danger: $pink;
 $light: $plain;
+$lighter: $lighterbackground;
 $lightest: $gray-050;
 $dark: $comment;
 
@@ -47,6 +48,7 @@ $theme-colors: map-merge(
     "success": $success,
     "danger": $danger,
     "light": $light,
+    "lighter": $lighter,
     "lightest": $lightest,
     "dark": $dark,
   ),
