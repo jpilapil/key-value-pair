@@ -6,18 +6,16 @@ import {
   faUserFriends,
   faCodeBranch,
   faCogs,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Landing() {
   return (
     <div>
       <div className="container">
-        {/* logo */}
-        <div className="row mt-9">
+        {/* small logo */}
+        <div className="row mt-8">
           <div className="col-12 text-center">
-            {/* <h1 className="logo-text text-success text-center">
-              Key:Value Pairs
-            </h1> */}
             <img
               src={landingLogo}
               alt="Key Value Pairs Landing Logo"
@@ -26,7 +24,7 @@ export default function Landing() {
           </div>
         </div>
         {/* card 1 */}
-        <div className="row mt-9">
+        <div className="row mt-8">
           <div className="col-lg-6 offset-lg-0 col-md-8 offset-md-2 col-10 offset-1 col-xl-5 offset-xl-1">
             {/* first login card */}
             <div id="inside-card" className="card mt-6">
@@ -127,7 +125,12 @@ export default function Landing() {
                     id="letsGo"
                     className="btn btn-tertiary btn-lg btn-block btn-lg landing-button"
                   >
-                    Continue
+                    Continue&nbsp;
+                    <FontAwesomeIcon
+                      icon={faChevronRight}
+                      size="sm"
+                      className=" mt-1"
+                    />
                   </Link>
                 </div>
               </div>
@@ -213,7 +216,7 @@ export default function Landing() {
           </div>
         </div>
 
-        <div className="row mt-7 ">
+        <div className="row mt-8">
           <div className="col-8 offset-2 col-lg-3 offset-lg-1 col-md-3 offset-md-1 col-sm-6 offset-sm-3  text-center mt-7">
             <FontAwesomeIcon icon={faUserFriends} className="fa-icon" />
             <p className="mt-5 text-dark">
@@ -228,7 +231,7 @@ export default function Landing() {
               collaborating on the same project.
             </p>
           </div>
-          <div className="col-8 offset-2 col-lg-3 offset-lg-1 col-md-3 offset-md-1 col-sm-6 offset-sm-3  text-center mt-7">
+          <div className="col-8 offset-2 col-lg-3 offset-lg-1 col-md-3 offset-md-1 col-sm-6 offset-sm-3  text-center mt-7 mb-5">
             <FontAwesomeIcon icon={faCogs} className="fa-icon" />
             <p className="mt-5 text-dark">
               Stay up to date with hunderds of technologies to choose from.

@@ -19,7 +19,7 @@ export default function Connect() {
             <OtherUser />
           </div>
           <div className="row justify-content-center">
-            <Link class="btn btn-link bt-lg text-tertiary">Show more</Link>
+            <Link className="btn bt-lg text-tertiary">Show more</Link>
           </div>
         </div>
       </div>

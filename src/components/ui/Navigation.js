@@ -32,11 +32,6 @@ export default function Navigation() {
           alt="Key Value Pairs Landing Logo"
           className="img-fluid"
         />
-        {/* <img
-          className="kvp-logo"
-          src={smallLogo}
-          alt="Key Value Pairs Landing Logo"
-        /> */}
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -66,38 +61,5 @@ export default function Navigation() {
         </Nav>
       </Navbar.Collapse>
     </Navbar>
-    // <div className="row ml-auto">
-    //   <div
-    //     className="btn-group d-inline-flex ml-auto mr-3"
-    //     role="navigation"
-    //     aria-label="navigation"
-    //   >
-    //     <Link
-    //       to="/connect"
-    //       type="button"
-    //       className={`btn btn-background text-light navigation-button ${tabActiveOnConnect(
-    //         url
-    //       )}`}
-    //     >
-    //       Connect
-    //     </Link>
-    //     <Link
-    //       to="/user"
-    //       type="button"
-    //       className={`btn btn-background text-light navigation-button ${tabActiveOnProfile(
-    //         url
-    //       )}`}
-    //     >
-    //       My Profile
-    // </Link>
-    // <Link
-    //   to="/"
-    //   type="button"
-    //   className={`btn btn-background text-light navigation-button`}
-    // >
-    //   Log Out
-    // </Link>
-    //   </div>
-    // </div>
   );
 }
