@@ -4,7 +4,7 @@ const users = [
     handle: "bobthebuilder",
     email: "bob@gmail.com",
     password: "5F4DCC3B5AA765D61D8327DEB882CF99",
-    createdAt: 1592412306,
+    createdAt: 1592452421714,
     techInterestedIn: "JavaScript, C++, C",
   },
   {
@@ -12,7 +12,7 @@ const users = [
     handle: "WhereIsYourManager",
     email: "karen@gmail.com",
     password: "EEEAC4F9D754AAF4909392BCE3FF2FF3",
-    createdAt: 1592412562,
+    createdAt: 1592452421714,
     techInterestedIn: "Swift, zsh, Python",
   },
   {
@@ -20,7 +20,7 @@ const users = [
     handle: "juanito",
     email: "juan@gmail.com",
     password: "A6BBC6A4D9981A9A3AF73B9E9AF353AD",
-    createdAt: 1592412651,
+    createdAt: 1592452421714,
     techInterestedIn: "Ruby, GO, Objective-C",
   },
   {
@@ -28,7 +28,7 @@ const users = [
     handle: "pEscobar",
     email: "pablo@gmail.com",
     password: "BE72E1341DFEFFCDCB4889ED13E577A3",
-    createdAt: 1592412658,
+    createdAt: 1592452421714,
     techInterestedIn: "C#, Java, Kotlin",
   },
 ];

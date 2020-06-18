@@ -32,6 +32,7 @@ $gray-050: #e5e6e8;
 $primary: $caret;
 $secondary: $gold;
 $tertiary: $cyan;
+$quaternary: $purple;
 $success: $lime;
 $danger: $pink;
 $light: $plain;
@@ -45,6 +46,7 @@ $theme-colors: map-merge(
     "primary": $primary,
     "secondary": $secondary,
     "tertiary": $tertiary,
+    "quaternary": $quaternary,
     "success": $success,
     "danger": $danger,
     "light": $light,

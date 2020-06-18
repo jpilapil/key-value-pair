@@ -30,9 +30,9 @@ export default function Profile() {
                 <p className="text-light mt-3">
                   Technologies I'm interested in:
                 </p>
-                <p className="text-lightest">tech</p>
+                <p className="text-lightest mt-1">tech</p>
                 <p className="text-light mt-3">Member since:</p>
-                <p className="text-lightest">2020</p>
+                <p className="text-lightest mt-1">2020</p>
               </div>
             </div>
           </div>
