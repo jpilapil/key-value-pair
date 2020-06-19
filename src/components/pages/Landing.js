@@ -30,16 +30,6 @@ export default function Landing() {
             <div id="inside-card" className="card mt-6">
               <div id="sign-up-card" className="card-body">
                 <h2 className="card-title ">Hello, world</h2>
-                {/* <p className="card-text-landing mb-6">
-                  Sign up for Key Value Pairs
-                </p>
-                <button
-                  id="sign-up-button"
-                  type="button"
-                  className="btn btn-primary btn-lg btn-block btn-lg landing-button"
-                >
-                  Sign up
-                </button> */}
                 {/* second login card */}
                 <div id="sign-up-card2">
                   <p className="card-text-landing sign-up-text text-secondary">
@@ -136,25 +126,6 @@ export default function Landing() {
               </div>
             </div>
           </div>
-
-          {/* <input
-                        type="radio"
-                        id="viewModeAll"
-                        name="viewMode"
-                        className="custom-control-input"
-                        // if favorites radio is not checked, then this input is checked
-                        checked={!this.state.isFavoritesChecked}
-                        // in the event that show all radio button is clicked/changed, run filterFuncs function
-                        onChange={(e) => {
-                           this.filterFuncs(e);
-                        }}
-                     />
-                     <label
-                        className="custom-control-label"
-                        htmlFor="viewModeAll"
-                     >
-                        Show All
-                     </label> */}
 
           {/* card 2 */}
 
