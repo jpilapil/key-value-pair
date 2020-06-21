@@ -5,6 +5,7 @@ import Landing from "./components/pages/Landing";
 import Connect from "./components/pages/Connect";
 import Profile from "./components/pages/Profile";
 import NotFound from "./components/pages/NotFound";
+// import testlogin from "./components/pages/testlogin";
 
 function App() {
   return (
