@@ -1,7 +1,6 @@
 // COLORS
 
 // One Dark Colors---
-
 // Default
 $plain: #abb2bf;
 // Background
@@ -24,9 +23,9 @@ $gold: #e5c07b;
 $blue: #61afef;
 // Comments
 $comment: #5c6370;
-
+// lighter background shade
 $lighterbackground: #333842;
-
+// lightest option
 $gray-050: #e5e6e8;
 
 $primary: $caret;
@@ -196,6 +195,24 @@ $input-padding-y-lg: $input-btn-padding-y-lg;
 $input-padding-x-lg: $input-btn-padding-x-lg;
 $input-font-size-lg: $font-size-base;
 $input-line-height-lg: $line-height-base;
+
+// FORMS
+
+$form-validation-states: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$form-validation-states: map-merge(
+  (
+    "valid": (
+      "color": $success,
+      "icon": $form-feedback-icon-valid,
+    ),
+    "invalid": (
+      "color": $danger,
+      "icon": $form-feedback-icon-invalid,
+    ),
+  ),
+  $form-validation-states
+);
 
 // CARDS
 

@@ -6,7 +6,24 @@ const users = [
     password: "5F4DCC3B5AA765D61D8327DEB882CF99",
     gender: "male",
     createdAt: 1592452421714,
-    techInterestedIn: "JavaScript, C++, C",
+    techInterestedIn: [
+      //array of objects, map over to display on other users!!
+      {
+        name: "JavaScript",
+        popularity: 60,
+        id: 1,
+      },
+      {
+        name: ".NET Core",
+        popularity: 50,
+        id: 2,
+      },
+      {
+        name: "Amazon DynamoDB",
+        popularity: 50,
+        id: 3,
+      },
+    ],
   },
   {
     id: "bbfc927c-f3d4-4cdd-b872-9cb233a194aa",
@@ -22,7 +39,7 @@ const users = [
     handle: "juanito",
     email: "juan@gmail.com",
     password: "A6BBC6A4D9981A9A3AF73B9E9AF353AD",
-    gender: "male",
+    gender: "na",
     createdAt: 1592452421714,
     techInterestedIn: "Ruby, GO, Objective-C",
   },
