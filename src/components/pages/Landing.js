@@ -8,6 +8,8 @@ import {
   faCogs,
 } from "@fortawesome/free-solid-svg-icons";
 import classnames from "classnames";
+import hash from "object-hash";
+import { v4 as getUuid } from "uuid";
 
 export default class Landing extends React.Component {
   constructor() {
@@ -33,12 +35,6 @@ export default class Landing extends React.Component {
       hasSignUpGenderError: false,
     };
   }
-
-  // showInputs() {
-  //   this.setState({
-  //     isDisplayingInputs: true,
-  //   });
-  // }
   // log in card default
   showLogInCard() {
     this.setState({
@@ -67,7 +63,7 @@ export default class Landing extends React.Component {
   }
 
   // LOG IN ----------
-  setLogInEmailState(logInEmailInput) {
+  async setLogInEmailState(logInEmailInput) {
     const lowerCasedEmailInput = logInEmailInput.toLowerCase();
     // eslint-disable-next-line
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -86,11 +82,11 @@ export default class Landing extends React.Component {
     }
   }
 
-  setLogInPasswordState(logInPasswordInput) {
+  async setLogInPasswordState(logInPasswordInput) {
     const uniqChars = [...new Set(logInPasswordInput)]; // turn set of password input into an array of unique characters
     if (logInPasswordInput === "") {
       this.setState({
-        logInPasswordError: "Please enter a password",
+        logInPasswordError: "Please enter your password",
         hasLogInPasswordError: true,
       });
     } else if (logInPasswordInput.length < 9) {
@@ -110,25 +106,31 @@ export default class Landing extends React.Component {
   }
 
   // log in errors
-  validateExistingUser() {
+  async validateExistingUser() {
     // email input
     const logInEmailInput = document.getElementById("logInEmailInput").value;
     // password input
     const logInPasswordInput = document.getElementById("logInPasswordInput")
       .value;
-    this.setLogInEmailState(logInEmailInput);
-    this.setLogInPasswordState(logInPasswordInput);
+    await this.setLogInEmailState(logInEmailInput);
+    await this.setLogInPasswordState(logInPasswordInput);
     if (
       this.state.hasLogInEmailError === false &&
       this.state.hasLogInPasswordError === false
     ) {
-      return console.log("VALID");
+      const user = {
+        id: getUuid(),
+        email: logInEmailInput,
+        password: hash(logInPasswordInput),
+        createdAt: Date.now(),
+      };
+      return console.log(user);
     }
   }
 
   // SIGN UP ----------
 
-  setSignUpEmailState(signUpEmailInput) {
+  async setSignUpEmailState(signUpEmailInput) {
     const lowerCasedEmailInput = signUpEmailInput.toLowerCase();
     // eslint-disable-next-line
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -154,7 +156,7 @@ export default class Landing extends React.Component {
     else return signUpPasswordInput.includes(localPart);
   }
 
-  setSignUpPasswordState(signUpPasswordInput, signUpEmailInput) {
+  async setSignUpPasswordState(signUpPasswordInput, signUpEmailInput) {
     const uniqChars = [...new Set(signUpPasswordInput)]; // turn set of password input into an array of unique characters
     if (signUpPasswordInput === "") {
       this.setState({
@@ -182,7 +184,7 @@ export default class Landing extends React.Component {
     }
   }
 
-  setSignUpHandleState(signUpHandleInput) {
+  async setSignUpHandleState(signUpHandleInput) {
     if (signUpHandleInput === "") {
       this.setState({
         signUpHandleError: "Please enter a username",
@@ -193,7 +195,7 @@ export default class Landing extends React.Component {
     }
   }
 
-  setTechInterestState(signUpTechInterestInput) {
+  async setTechInterestState(signUpTechInterestInput) {
     if (signUpTechInterestInput === "") {
       this.setState({
         signUpTechInterestError:
@@ -208,7 +210,11 @@ export default class Landing extends React.Component {
     }
   }
 
-  setGenderState(genderMaleChecked, genderFemaleChecked, genderNAChecked) {
+  async setGenderState(
+    genderMaleChecked,
+    genderFemaleChecked,
+    genderNAChecked
+  ) {
     if (
       // if all are not cheched, throw error. if one is checked, throw no error
       genderMaleChecked === false &&
@@ -228,7 +234,7 @@ export default class Landing extends React.Component {
   }
 
   // sign up errors
-  createNewUser() {
+  async createNewUser() {
     // email input
     const signUpEmailInput = document.getElementById("signUpEmailInput").value;
     // password input
@@ -248,11 +254,11 @@ export default class Landing extends React.Component {
     // console.log(genderFemaleChecked);
     const genderNAChecked = document.getElementById("genderNA").checked;
     // console.log(genderNAChecked);
-    this.setSignUpEmailState(signUpEmailInput);
-    this.setSignUpPasswordState(signUpPasswordInput, signUpEmailInput);
-    this.setSignUpHandleState(signUpHandleInput);
-    this.setTechInterestState(signUpTechInterestInput);
-    this.setGenderState(
+    await this.setSignUpEmailState(signUpEmailInput);
+    await this.setSignUpPasswordState(signUpPasswordInput, signUpEmailInput);
+    await this.setSignUpHandleState(signUpHandleInput);
+    await this.setTechInterestState(signUpTechInterestInput);
+    await this.setGenderState(
       genderMaleChecked,
       genderFemaleChecked,
       genderNAChecked
@@ -264,7 +270,18 @@ export default class Landing extends React.Component {
       this.state.hasSignUpTechInterestError === false &&
       this.state.hasSignUpGenderError === false
     ) {
-      return console.log("VALID");
+      const user = {
+        id: getUuid(),
+        email: signUpEmailInput,
+        password: hash(signUpPasswordInput),
+        createdAt: Date.now(),
+        handle: signUpHandleInput,
+        //gets value of the selected gender input (male, female, or na)
+        gender: document.querySelector('input[name="genderSelect"]:checked')
+          .value,
+        techInterestedIn: signUpTechInterestInput,
+      };
+      return console.log(user);
     }
   }
 
@@ -442,7 +459,7 @@ export default class Landing extends React.Component {
                   type="radio"
                   name="genderSelect"
                   id="genderMale"
-                  value="option1"
+                  value="male"
                 />
                 <label
                   className="form-check-label text-lightest"
@@ -457,7 +474,7 @@ export default class Landing extends React.Component {
                   type="radio"
                   name="genderSelect"
                   id="genderFemale"
-                  value="option2"
+                  value="female"
                 />
                 <label
                   className="form-check-label text-lightest"
@@ -472,7 +489,7 @@ export default class Landing extends React.Component {
                   type="radio"
                   name="genderSelect"
                   id="genderNA"
-                  value="option3"
+                  value="na"
                 />
                 <label
                   className="form-check-label text-lightest"
