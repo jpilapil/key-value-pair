@@ -28,6 +28,7 @@ export default class Landing extends React.Component {
       signUpHandleError: "",
       signUpTechInterestError: "",
       signUpGenderError: "",
+      signUpGenderSelect: "",
       hasSignUpEmailError: false,
       hasSignUpPasswordError: false,
       hasSignUpHandleError: false,
@@ -54,6 +55,7 @@ export default class Landing extends React.Component {
       signUpHandleError: "",
       signUpTechInterestError: "",
       signUpGenderError: "",
+      signUpGenderSelect: "",
       hasSignUpEmailError: false,
       hasSignUpPasswordError: false,
       hasSignUpHandleError: false,
@@ -61,6 +63,13 @@ export default class Landing extends React.Component {
       hasSignUpGenderError: false,
     });
   }
+
+  // gets value of radio
+  handleChange = (e) => {
+    this.setState({
+      signUpGenderSelect: e.target.value,
+    });
+  };
 
   // LOG IN ----------
   async setLogInEmailState(logInEmailInput) {
@@ -210,16 +219,10 @@ export default class Landing extends React.Component {
     }
   }
 
-  async setGenderState(
-    genderMaleChecked,
-    genderFemaleChecked,
-    genderNAChecked
-  ) {
+  async setGenderState(genderSelect) {
     if (
-      // if all are not cheched, throw error. if one is checked, throw no error
-      genderMaleChecked === false &&
-      genderFemaleChecked === false &&
-      genderNAChecked === false
+      // if genderSelect is empty, throw error
+      genderSelect === ""
     ) {
       this.setState({
         signUpGenderError: "Please select your gender",
@@ -232,7 +235,7 @@ export default class Landing extends React.Component {
       });
     }
   }
-
+  // !!!!!! convert all these similar to gender input !!!!!!
   // sign up errors
   async createNewUser() {
     // email input
@@ -248,21 +251,23 @@ export default class Landing extends React.Component {
       "signUpTechInterestInput"
     ).value;
     // gender input
-    const genderMaleChecked = document.getElementById("genderMale").checked;
-    // console.log(genderMaleChecked);
-    const genderFemaleChecked = document.getElementById("genderFemale").checked;
-    // console.log(genderFemaleChecked);
-    const genderNAChecked = document.getElementById("genderNA").checked;
+    const signUpGenderSelect = this.state.signUpGenderSelect;
+    // const genderMaleChecked = document.getElementById("genderMale").checked;
+    // // console.log(genderMaleChecked);
+    // const genderFemaleChecked = document.getElementById("genderFemale").checked;
+    // // console.log(genderFemaleChecked);
+    // const genderNAChecked = document.getElementById("genderNA").checked;
     // console.log(genderNAChecked);
     await this.setSignUpEmailState(signUpEmailInput);
     await this.setSignUpPasswordState(signUpPasswordInput, signUpEmailInput);
     await this.setSignUpHandleState(signUpHandleInput);
     await this.setTechInterestState(signUpTechInterestInput);
-    await this.setGenderState(
-      genderMaleChecked,
-      genderFemaleChecked,
-      genderNAChecked
-    );
+    await this.setGenderState(signUpGenderSelect);
+    // await this.setGenderState(
+    //   genderMaleChecked,
+    //   genderFemaleChecked,
+    //   genderNAChecked
+    // );
     if (
       this.state.hasSignUpEmailError === false &&
       this.state.hasSignUpPasswordError === false &&
@@ -277,8 +282,7 @@ export default class Landing extends React.Component {
         createdAt: Date.now(),
         handle: signUpHandleInput,
         //gets value of the selected gender input (male, female, or na)
-        gender: document.querySelector('input[name="genderSelect"]:checked')
-          .value,
+        gender: this.state.signUpGenderSelect,
         techInterestedIn: signUpTechInterestInput,
       };
       return console.log(user);
@@ -460,6 +464,8 @@ export default class Landing extends React.Component {
                   name="genderSelect"
                   id="genderMale"
                   value="male"
+                  checked={this.state.signUpGenderSelect === "male"}
+                  onChange={this.handleChange}
                 />
                 <label
                   className="form-check-label text-lightest"
@@ -475,6 +481,8 @@ export default class Landing extends React.Component {
                   name="genderSelect"
                   id="genderFemale"
                   value="female"
+                  checked={this.state.signUpGenderSelect === "female"}
+                  onChange={this.handleChange}
                 />
                 <label
                   className="form-check-label text-lightest"
@@ -490,6 +498,8 @@ export default class Landing extends React.Component {
                   name="genderSelect"
                   id="genderNA"
                   value="na"
+                  checked={this.state.signUpGenderSelect === "na"}
+                  onChange={this.handleChange}
                 />
                 <label
                   className="form-check-label text-lightest"
