@@ -118,6 +118,12 @@ export default class Landing extends React.Component {
       .value;
     this.setLogInEmailState(logInEmailInput);
     this.setLogInPasswordState(logInPasswordInput);
+    if (
+      this.state.hasLogInEmailError === false &&
+      this.state.hasLogInPasswordError === false
+    ) {
+      return console.log("VALID");
+    }
   }
 
   // SIGN UP ----------
@@ -251,6 +257,15 @@ export default class Landing extends React.Component {
       genderFemaleChecked,
       genderNAChecked
     );
+    if (
+      this.state.hasSignUpEmailError === false &&
+      this.state.hasSignUpPasswordError === false &&
+      this.state.hasSignUpHandleError === false &&
+      this.state.hasSignUpTechInterestError === false &&
+      this.state.hasSignUpGenderError === false
+    ) {
+      return console.log("VALID");
+    }
   }
 
   // log in card -- shown as default state
