@@ -10,8 +10,10 @@ import {
 import classnames from "classnames";
 import hash from "object-hash";
 import { v4 as getUuid } from "uuid";
+import { EMAIL_REGEX } from "../../utils/helpers";
+import { withRouter } from "react-router-dom";
 
-export default class Landing extends React.Component {
+class Landing extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -36,7 +38,7 @@ export default class Landing extends React.Component {
       hasSignUpGenderError: false,
     };
   }
-  // log in card default
+  // set log in card
   showLogInCard() {
     this.setState({
       landingCard: "log-in",
@@ -46,7 +48,7 @@ export default class Landing extends React.Component {
       hasLogInPasswordError: false,
     });
   }
-  // sign up card default
+  // set sign up card
   showSignUpCard() {
     this.setState({
       landingCard: "create-account",
@@ -74,14 +76,12 @@ export default class Landing extends React.Component {
   // LOG IN ----------
   async setLogInEmailState(logInEmailInput) {
     const lowerCasedEmailInput = logInEmailInput.toLowerCase();
-    // eslint-disable-next-line
-    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (logInEmailInput === "")
       this.setState({
         logInEmailError: "Please enter your email address",
         hasLogInEmailError: true,
       });
-    else if (emailRegex.test(lowerCasedEmailInput) === false) {
+    else if (EMAIL_REGEX.test(lowerCasedEmailInput) === false) {
       this.setState({
         logInEmailError: "Please enter a valid email address",
         hasLogInEmailError: true,
@@ -133,7 +133,8 @@ export default class Landing extends React.Component {
         password: hash(logInPasswordInput),
         createdAt: Date.now(),
       };
-      return console.log(user);
+      console.log(user);
+      this.props.history.push("/connect");
     }
   }
 
@@ -141,14 +142,12 @@ export default class Landing extends React.Component {
 
   async setSignUpEmailState(signUpEmailInput) {
     const lowerCasedEmailInput = signUpEmailInput.toLowerCase();
-    // eslint-disable-next-line
-    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (signUpEmailInput === "")
       this.setState({
         signUpEmailError: "Please enter your email address",
         hasSignUpEmailError: true,
       });
-    else if (emailRegex.test(lowerCasedEmailInput) === false) {
+    else if (EMAIL_REGEX.test(lowerCasedEmailInput) === false) {
       this.setState({
         signUpEmailError: "Please enter a valid email address",
         hasSignUpEmailError: true,
@@ -285,7 +284,8 @@ export default class Landing extends React.Component {
         gender: this.state.signUpGenderSelect,
         techInterestedIn: signUpTechInterestInput,
       };
-      return console.log(user);
+      console.log(user);
+      this.props.history.push("/connect");
     }
   }
 
@@ -343,7 +343,6 @@ export default class Landing extends React.Component {
               Create a new account!
             </button>
             <button
-              to="/connect"
               id="logIn"
               className="btn btn-tertiary float-right mt-3"
               onClick={() => {
@@ -482,7 +481,7 @@ export default class Landing extends React.Component {
                   id="genderFemale"
                   value="female"
                   checked={this.state.signUpGenderSelect === "female"}
-                  onChange={this.handleChange}
+                  onChange={this.handleChange} // on change, run function
                 />
                 <label
                   className="form-check-label text-lightest"
@@ -519,6 +518,7 @@ export default class Landing extends React.Component {
               id="letsGo"
               className="btn btn-tertiary btn-block btn-lg landing-button mt-5"
               onClick={() => {
+                // on click, run function
                 this.createNewUser();
               }}
             >
@@ -586,3 +586,4 @@ export default class Landing extends React.Component {
     );
   }
 }
+export default withRouter(Landing);
