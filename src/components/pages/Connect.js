@@ -4,6 +4,8 @@ import OtherUser from "../ui/OtherUser";
 import users from "../../mock-data/users";
 import { Link } from "react-router-dom";
 import orderBy from "lodash/orderBy";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export default class Connect extends React.Component {
   constructor(props) {
@@ -61,29 +63,14 @@ export default class Connect extends React.Component {
             <h2 className="text-secondary text-center mb-8">
               Connect with other users
             </h2>
+
             {/* search bar */}
-            <div className="row">
-              <div className="col-8 offset-2">
-                <p className="text-muted">Search for a user:</p>
-                <input
-                  type="text"
-                  className="form-control mt-2"
-                  placeholder="Search for a username"
-                  aria-label="Search for a username"
-                  aria-describedby="searchInput"
-                  id="searchInput"
-                  onChange={(e) => {
-                    this.handleChange(e);
-                  }}
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-3 ">
-                <p className="text-muted">Filter by:</p>
+            <div className="row justify-content-start mb-7">
+              <div className="col-2 ">
                 <select
                   value={this.state.order}
-                  className="form-control form-control-sm mt-2"
+                  className="form-control mt-1"
+                  id="searchFilter"
                   onChange={(e) => this.setOrder(e)}
                 >
                   <option value='[["handle", "desc"]]'>All</option>
@@ -91,16 +78,36 @@ export default class Connect extends React.Component {
                     Highest Rated
                   </option>
                 </select>
-              </div>{" "}
-              <button
-                className="btn btn-tertiary  mr-4 mt-4"
-                onClick={() => this.filterByInput()}
-              >
-                Search
-              </button>
+              </div>
+              <div className="col-0 mt-4 ml-auto">
+                <FontAwesomeIcon icon={faSearch} className="fa-search" />
+              </div>
+
+              <div className="col-7">
+                <input
+                  type="text"
+                  className="form-control mt-1"
+                  placeholder="Search users"
+                  aria-label="Search users"
+                  aria-describedby="searchInput"
+                  id="searchInput"
+                  onChange={(e) => {
+                    this.handleChange(e);
+                  }}
+                />
+              </div>
+
+              <div className="col-1 mr-7 ml-auto">
+                <button
+                  className="btn btn-sm btn-tertiary"
+                  onClick={() => this.filterByInput()}
+                >
+                  Search
+                </button>
+              </div>
             </div>
-            <div className="row mt-2"></div>
-            <div className="row">
+
+            <div className="row mt-2">
               {this.state.displayedUsers.map((user) => {
                 return (
                   <OtherUser

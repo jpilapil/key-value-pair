@@ -141,8 +141,8 @@ $input-btn-padding-x: map-get($spacers, 4);
 $input-btn-font-size: $font-size-base;
 $input-btn-line-height: $line-height-base;
 
-$input-btn-padding-y-sm: map-get($spacers, 1);
-$input-btn-padding-x-sm: map-get($spacers, 4);
+$input-btn-padding-y-sm: map-get($spacers, 2);
+$input-btn-padding-x-sm: map-get($spacers, 5);
 $input-btn-font-size-sm: $font-size-base;
 $input-btn-line-height-sm: $line-height-base;
 
@@ -180,6 +180,7 @@ $custom-control-indicator-checked-border-color: $custom-control-indicator-checke
 // INPUTS
 
 $input-bg: $gray-050;
+$input-focus-box-shadow: none;
 
 $input-padding-y: $input-btn-padding-y;
 $input-padding-x: $input-btn-padding-x;

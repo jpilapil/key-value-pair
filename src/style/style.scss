@@ -13,6 +13,11 @@ body {
   color: $light;
 }
 
+.fa-search {
+  font-size: 1.5rem;
+  color: $light;
+}
+
 // LABEL
 // for male/female/rather not say
 .form-check-label {
@@ -107,6 +112,15 @@ textarea {
   resize: none; /*remove the resize handle on the bottom right*/
 }
 
+input {
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
 // .input-outline {
 //    border: 2px solid $gray;
 // }
@@ -156,4 +170,18 @@ textarea {
 .invalidEmailFeedback {
   color: $danger;
   font-size: $font-size-base;
+}
+
+#searchInput {
+  background-color: $background;
+  border: none;
+  border-bottom: 1px solid $light;
+  border-radius: 0;
+  color: $light;
+}
+
+#searchFilter {
+  background-color: $lighterbackground;
+  border-color: $lighterbackground;
+  color: $light;
 }
