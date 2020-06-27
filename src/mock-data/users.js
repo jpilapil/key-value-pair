@@ -6,6 +6,7 @@ const users = [
     password: "5F4DCC3B5AA765D61D8327DEB882CF99",
     gender: "male",
     createdAt: 1592452421714,
+    rating: 1,
     techInterestedIn: [
       //array of objects, map over to display on other users!!
       {
@@ -32,6 +33,7 @@ const users = [
     password: "EEEAC4F9D754AAF4909392BCE3FF2FF3",
     gender: "female",
     createdAt: 1592452421714,
+    rating: 2,
     techInterestedIn: [
       {
         name: "Amazon Echo/Alexa",
@@ -57,6 +59,7 @@ const users = [
     password: "A6BBC6A4D9981A9A3AF73B9E9AF353AD",
     gender: "na",
     createdAt: 1592452421714,
+    rating: 3,
     techInterestedIn: [
       {
         name: "Android",
@@ -82,6 +85,7 @@ const users = [
     password: "BE72E1341DFEFFCDCB4889ED13E577A3",
     gender: "male",
     createdAt: 1592452421714,
+    rating: 4,
     techInterestedIn: [
       {
         name: "Apache Hive",
