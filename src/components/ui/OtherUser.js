@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import toDisplayDate from "date-fns/format";
 
 export default function OtherUser(props) {
@@ -25,9 +25,7 @@ export default function OtherUser(props) {
           - {toDisplayDate(props.createdAt, "MMMM do, y")}
         </p>
 
-        <Link to="#" className="btn btn-tertiary ml-auto">
-          Contact
-        </Link>
+        <button className="btn btn-tertiary ml-auto">Contact</button>
       </div>
     </div>
   );

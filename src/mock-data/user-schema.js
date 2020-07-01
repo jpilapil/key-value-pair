@@ -4,6 +4,7 @@ const userSchema = {
   email: String,
   password: String,
   gender: String,
+  preferredGender: String, //NEW
   createdAt: Number,
   techInterestedIn: String,
 };
