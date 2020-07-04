@@ -14,7 +14,7 @@ export default class Connect extends React.Component {
 
     axios
       .get(
-        "https://raw.githubusercontent.com/jpilapil/key-value-pair/master/src/mock-data/users.js"
+        "https://raw.githubusercontent.com/jpilapil/key-value-pair/master/src/mock-data/users.json"
       )
       .then(function (response) {
         // handle success
