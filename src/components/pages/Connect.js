@@ -6,10 +6,27 @@ import { Link } from "react-router-dom";
 import orderBy from "lodash/orderBy";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 export default class Connect extends React.Component {
   constructor(props) {
     super(props);
+
+    axios
+      .get(
+        "https://raw.githubusercontent.com/jpilapil/key-value-pair/master/src/mock-data/users.js"
+      )
+      .then(function (response) {
+        // handle success
+        console.log(response);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .finally(function () {
+        // always executed
+      });
 
     this.state = {
       search: "",
