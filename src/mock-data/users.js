@@ -104,6 +104,58 @@ const users = [
       },
     ],
   },
+  {
+    id: "0f933bbd-d1fb-4ad5-80f0-661c3c0aa2f8",
+    handle: "lisa",
+    email: "lisa@gmail.com",
+    password: "63D0CEA9D550E495FDE1B81310951BD7",
+    gender: "female",
+    createdAt: 1593894321997,
+    rating: 5,
+    techInterestedIn: [
+      {
+        name: "JavaScript",
+        popularity: 60,
+        id: 1,
+      },
+      {
+        name: "C#",
+        popularity: 50,
+        id: 19,
+      },
+      {
+        name: "C++",
+        popularity: 50,
+        id: 20,
+      },
+    ],
+  },
+  {
+    id: "1d1e31cd-eff2-47de-b46d-4d45bb2dd97f",
+    handle: "godmilk",
+    email: "brian@gmail.com",
+    password: "63D0CEA9D550E495FDE1B81310951BD7",
+    gender: "male",
+    createdAt: 1593894550566,
+    rating: 5,
+    techInterestedIn: [
+      {
+        name: "Swift",
+        popularity: 50,
+        id: 91,
+      },
+      {
+        name: "C#",
+        popularity: 50,
+        id: 19,
+      },
+      {
+        name: "C++",
+        popularity: 50,
+        id: 20,
+      },
+    ],
+  },
 ];
 
 export default users;
