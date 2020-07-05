@@ -4,7 +4,7 @@ import rootReducer from "./combineReducers";
 
 const initialState = {
   // global state
-  user: {},
+  currentUser: {},
 };
 
 const store = createStore(rootReducer, initialState, composeWithDevTools());

@@ -1,39 +1,47 @@
 import React from "react";
 import AppTemplate from "../ui/AppTemplate";
 import OtherUser from "../ui/OtherUser";
-import users from "../../mock-data/users";
-import { Link } from "react-router-dom";
+// import users from "../../mock-data/users";
+// import { Link } from "react-router-dom";
 import orderBy from "lodash/orderBy";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import { connect } from "react-redux";
+// import actions from "../../store/actions";
 
-export default class Connect extends React.Component {
+class Connect extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      search: "",
+      order: '[["handle", "asc"]]',
+      displayedUsers: [],
+      allUsers: [],
+    };
+  }
+
+  componentDidMount() {
+    // componentDidMount is a lifecycle method, does not need to be called somewhere else, will always run before render
     axios
       .get(
         "https://raw.githubusercontent.com/jpilapil/key-value-pair/master/src/mock-data/users.json"
       )
-      .then(function (response) {
+      .then((res) => {
         // handle success
-        console.log(response);
+        console.log(res);
+
+        const users = res.data;
+        this.setState({
+          displayedUsers: orderBy(users, ["handle", "asc"]), // what is displayed based off of filter and ordering
+          allUsers: orderBy(users, ["handle", "asc"]), // shows all users by default
+        });
       })
-      .catch(function (error) {
+      .catch((error) => {
         // handle error
         console.log(error);
-      })
-      .finally(function () {
-        // always executed
       });
-
-    this.state = {
-      search: "",
-      displayedUsers: orderBy(users, ["handle", "asc"]), // what is displayed based off of filter and ordering
-      allUsers: orderBy(users, ["handle", "asc"]), // shows all users by default
-      order: '[["handle", "asc"]]',
-    };
   }
 
   handleChange(e) {
@@ -126,6 +134,12 @@ export default class Connect extends React.Component {
 
             <div className="row mt-2">
               {this.state.displayedUsers.map((user) => {
+                /*
+
+                TODO??
+                if user.techInterestedIn === currentUser.techInterestedIn, return user 
+                
+                */
                 return (
                   <OtherUser
                     handle={user.handle}
@@ -136,12 +150,19 @@ export default class Connect extends React.Component {
                 );
               })}
             </div>
-            <div className="row justify-content-center">
+            {/* <div className="row justify-content-center">
               <Link className="btn bt-lg text-tertiary">Show more</Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </AppTemplate>
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser,
+    otherUsers: state.otherUsers,
+  };
+}
+export default connect(mapStateToProps)(Connect);

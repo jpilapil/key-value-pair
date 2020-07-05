@@ -12,6 +12,9 @@ import hash from "object-hash";
 import { v4 as getUuid } from "uuid";
 import { EMAIL_REGEX } from "../../utils/helpers";
 import { withRouter } from "react-router-dom";
+import axios from "axios";
+import { connect } from "react-redux";
+import actions from "../../store/actions";
 
 class Landing extends React.Component {
   constructor() {
@@ -133,7 +136,25 @@ class Landing extends React.Component {
         password: hash(logInPasswordInput),
         createdAt: Date.now(),
       };
-      console.log(user);
+      console.log("created user object for POST: ", user);
+      // mimics api response
+      axios
+        .get(
+          "https://raw.githubusercontent.com/jpilapil/key-value-pair/master/src/mock-data/user.json"
+        )
+        .then((res) => {
+          const currentUser = res.data;
+          console.log("this is the user stored to global state: ", currentUser);
+          this.props.dispatch({
+            type: actions.UPDATE_CURRENT_USER,
+            payload: res.data,
+          });
+        })
+        .catch((error) => {
+          // handle error
+          console.log(error);
+        });
+
       this.props.history.push("/connect");
     }
   }
@@ -284,7 +305,25 @@ class Landing extends React.Component {
         gender: this.state.signUpGenderSelect,
         techInterestedIn: signUpTechInterestInput,
       };
-      console.log(user);
+      console.log("created user object for POST: ", user);
+      // mimics api response
+      axios
+        .get(
+          "https://raw.githubusercontent.com/jpilapil/key-value-pair/master/src/mock-data/user.json"
+        )
+        .then((res) => {
+          const currentUser = res.data;
+          console.log("this is the user stored to global state: ", currentUser);
+          this.props.dispatch({
+            type: actions.UPDATE_CURRENT_USER,
+            payload: res.data,
+          });
+        })
+        .catch((error) => {
+          // handle error
+          console.log(error);
+        });
+
       this.props.history.push("/connect");
     }
   }
@@ -586,4 +625,7 @@ class Landing extends React.Component {
     );
   }
 }
-export default withRouter(Landing);
+function mapStateToProps(state) {
+  return {};
+}
+export default withRouter(connect(mapStateToProps)(Landing));
