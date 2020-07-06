@@ -8,7 +8,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { connect } from "react-redux";
+import currentUser from "../../store/reducers/currentUser";
+import actions from "../../store/actions";
 // import actions from "../../store/actions";
+// import store from "../../store/store";
 
 class Connect extends React.Component {
   constructor(props) {
@@ -19,6 +22,7 @@ class Connect extends React.Component {
       order: '[["handle", "asc"]]',
       displayedUsers: [],
       allUsers: [],
+      currentUser: {},
     };
   }
 
@@ -134,20 +138,52 @@ class Connect extends React.Component {
 
             <div className="row mt-2">
               {this.state.displayedUsers.map((user) => {
+                const currentUserTech = JSON.stringify(
+                  this.props.currentUser.techInterestedIn
+                );
+                const allUserTech = JSON.stringify(user.techInterestedIn);
+                //  ///// THESE ARE THE OBJECTS TURNED INTO STRINGS, ALSO INCLUDES ALL KEYS, HOW DO YOU JUST COMPARE THE VALUE OF techInterestedIn.name? /////
+
+                console.log(allUserTech);
+                console.log(currentUserTech);
                 /*
 
                 TODO??
                 if user.techInterestedIn === currentUser.techInterestedIn, return user 
                 
                 */
-                return (
-                  <OtherUser
-                    handle={user.handle}
-                    techInterestedIn={user.techInterestedIn}
-                    createdAt={user.createdAt}
-                    key={user.id}
-                  />
-                );
+                // if (
+                //   this.state.currentUser.techInterestedIn.includes(
+                //     user.techInterestedIn
+                //   )
+                // ) {
+
+                // console.log("this is all users tech: ", allUserTech); // works
+                // console.log("this is current user tech: ", currentUserTech); // works only when logging in
+                if (allUserTech === currentUserTech) {
+                  // console.log("almost there buddy");
+                  return (
+                    <OtherUser
+                      handle={user.handle}
+                      techInterestedIn={user.techInterestedIn}
+                      createdAt={user.createdAt}
+                      key={user.id}
+                    />
+                  );
+                }
+
+                // return (
+                //   <OtherUser
+                //     handle={user.handle}
+                //     techInterestedIn={user.techInterestedIn}
+                //     createdAt={user.createdAt}
+                //     key={user.id}
+                //   />
+                // );
+                // } else {
+                //   console.log("try again loser");
+                //   return false;
+                // }
               })}
             </div>
             {/* <div className="row justify-content-center">
@@ -162,7 +198,6 @@ class Connect extends React.Component {
 function mapStateToProps(state) {
   return {
     currentUser: state.currentUser,
-    otherUsers: state.otherUsers,
   };
 }
 export default connect(mapStateToProps)(Connect);
