@@ -134,6 +134,12 @@ class Connect extends React.Component {
 
             <div className="row mt-2">
               {this.state.displayedUsers.map((user) => {
+                /*
+
+                USE FILTER INSTEAD
+
+                */
+
                 // mapped users in local state
                 const allUserTech = user.techInterestedIn.map(
                   (tech) => tech.name
