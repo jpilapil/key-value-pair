@@ -2,42 +2,55 @@ import React from "react";
 import AppTemplate from "../ui/AppTemplate";
 // import OtherUser from "../ui/OtherUser";
 // import { Link } from "react-router-dom";
+import toDisplayDate from "date-fns/format";
+import { connect } from "react-redux";
 
-export default function Profile() {
-  return (
-    <AppTemplate>
-      <div>
-        <div className="row">
-          <div className="mt-8 col-12 offset-1">
-            <h2 className="text-secondary">My profile</h2>
+class Profile extends React.Component {
+  render() {
+    const currentUser = this.props.currentUser.techInterestedIn.map(
+      (tech) => tech.name + ", "
+    );
+    // const filteredCurrentUser = currentUser.map((tech) => tech.name);
+    // console.log(filteredCurrentUser);
+    return (
+      <AppTemplate>
+        <div>
+          <div className="row">
+            <div className="mt-8 col-12 offset-1">
+              <h2 className="text-secondary">My profile</h2>
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-10 offset-1 mt-8">
-            <div className="card">
-              <div className="card-body">
-                <h4 className="text-primary">User profile</h4>
-
-                {/* <p className="text-light">About:</p>
-              <p className="text-lightest">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                sit amet elementum turpis. Duis eu quam magna. Praesent
-                facilisis eleifend orci, in commodo sem blandit bibendum. In eu
-                feugiat nisl, non dignissim neque. Nullam scelerisque congue
-                placerat. Pellentesque sit amet efficitur eros. Pellentesque
-                odio lectus, eleifend nec sem ut, tincidunt.
-              </p> */}
-                <p className="text-light mt-3">
-                  Technologies I'm interested in:
-                </p>
-                <p className="text-lightest mt-1">tech</p>
-                <p className="text-light mt-3">Member since:</p>
-                <p className="text-lightest mt-1">2020</p>
+          <div className="row">
+            <div className="col-10 offset-1 mt-8">
+              <div className="card">
+                <div className="card-body">
+                  <h4 className="text-primary">
+                    {this.props.currentUser.handle}
+                  </h4>
+                  <p className="text-light mt-3">
+                    Technologies I'm interested in:
+                  </p>
+                  <p className="text-lightest mt-1">{currentUser}</p>
+                  <p className="text-light mt-3">Member since:</p>
+                  <p className="text-lightest mt-1">
+                    {toDisplayDate(
+                      this.props.currentUser.createdAt,
+                      "MMMM do, y"
+                    )}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </AppTemplate>
-  );
+      </AppTemplate>
+    );
+  }
 }
+function mapStateToProps(state) {
+  // map state to props in local component
+  return {
+    currentUser: state.currentUser,
+  };
+}
+export default connect(mapStateToProps)(Profile);
