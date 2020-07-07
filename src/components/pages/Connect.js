@@ -53,10 +53,12 @@ class Connect extends React.Component {
         const users = res.data;
 
         //  - get tech interest from redux store
+        console.log(this.props.currentUser);
         const currentUserTechIds = this.props.currentUser.techInterestedIn.map(
           (tech) => tech.id
         );
         console.log("this is your tech: ", currentUserTechIds); // returns array of strings
+
         //  - filter all local users to include any user with a tech interest match
         const filteredUsers = [];
         currentUserTechIds.forEach((id) => {
@@ -64,14 +66,18 @@ class Connect extends React.Component {
             user.techInterestedIn.forEach((tech) => {
               console.log(user);
               if (tech.id === id) {
+                // return multiple copies of users with the same tech id
                 filteredUsers.push(user);
               }
             });
           });
         });
-        const bestMatchedUsers = filteredUsers; // order filteredUsers by most common tech interests, count how often someone is matched, order by number of times matched, most = highest, less = lowest
+
+        const bestMatchedUsers = filteredUsers; // order filteredUsers by most common tech interests, count how often someone is matched, order by number of times matches, most = highest, less = lowest
         //  - set displayed users state to filtered users
         this.setState({ displayedUsers: [...new Set(bestMatchedUsers)] });
+        // displays users multiple times, use new set
+        // this.setState({ displayedUsers: bestMatchedUsers });
 
         // this.setState({
         //   displayedUsers: orderBy(users, ["handle", "asc"]), // what is displayed based off of filter and ordering
