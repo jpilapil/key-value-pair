@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { connect } from "react-redux";
+import actions from "../../store/actions";
 
 class Connect extends React.Component {
   constructor(props) {
@@ -22,8 +23,26 @@ class Connect extends React.Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // componentDidMount is a lifecycle method, does not need to be called somewhere else, will always run before render
+
+    await axios
+      .get(
+        "https://raw.githubusercontent.com/jpilapil/key-value-pair/master/src/mock-data/user.json"
+      )
+      .then((res) => {
+        const currentUser = res.data;
+        console.log("this is the user stored to global state: ", currentUser);
+        this.props.dispatch({
+          type: actions.UPDATE_CURRENT_USER,
+          payload: res.data,
+        });
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+      });
+
     axios
       .get(
         "https://raw.githubusercontent.com/jpilapil/key-value-pair/master/src/mock-data/users.json"
@@ -31,12 +50,33 @@ class Connect extends React.Component {
       .then((res) => {
         // handle success
         console.log(res);
-
         const users = res.data;
-        this.setState({
-          displayedUsers: orderBy(users, ["handle", "asc"]), // what is displayed based off of filter and ordering
-          allUsers: orderBy(users, ["handle", "asc"]), // shows all users by default
+
+        //  - get tech interest from redux store
+        const currentUserTechIds = this.props.currentUser.techInterestedIn.map(
+          (tech) => tech.id
+        );
+        console.log("this is your tech: ", currentUserTechIds); // returns array of strings
+        //  - filter all local users to include any user with a tech interest match
+        const filteredUsers = [];
+        currentUserTechIds.forEach((id) => {
+          users.forEach((user) => {
+            user.techInterestedIn.forEach((tech) => {
+              console.log(user);
+              if (tech.id === id) {
+                filteredUsers.push(user);
+              }
+            });
+          });
         });
+        const bestMatchedUsers = filteredUsers; // order filteredUsers by most common tech interests, count how often someone is matched, order by number of times matched, most = highest, less = lowest
+        //  - set displayed users state to filtered users
+        this.setState({ displayedUsers: [...new Set(bestMatchedUsers)] });
+
+        // this.setState({
+        //   displayedUsers: orderBy(users, ["handle", "asc"]), // what is displayed based off of filter and ordering
+        //   allUsers: orderBy(users, ["handle", "asc"]), // shows all users by default
+        // });
       })
       .catch((error) => {
         // handle error
@@ -98,7 +138,9 @@ class Connect extends React.Component {
                   id="searchFilter"
                   onChange={(e) => this.setOrder(e)}
                 >
-                  <option value='[["handle", "desc"]]'>All</option>
+                  <option value='[["handle", "desc"]]'>
+                    All Matched Users
+                  </option>
                   <option value='[["rating", "handle"], ["desc", "asc"]]'>
                     Highest Rated
                   </option>
@@ -134,65 +176,14 @@ class Connect extends React.Component {
 
             <div className="row mt-2">
               {this.state.displayedUsers.map((user) => {
-                /*
-
-                USE FILTER INSTEAD
-
-                */
-
-                // mapped users in local state
-                const allUserTech = user.techInterestedIn.map(
-                  (tech) => tech.name
+                return (
+                  <OtherUser
+                    handle={user.handle}
+                    techInterestedIn={user.techInterestedIn}
+                    createdAt={user.createdAt}
+                    key={user.id}
+                  />
                 );
-                console.log("this is all users tech: ", allUserTech); // returns array of strings
-                // current user stored in global state
-                const currentUserTech = this.props.currentUser.techInterestedIn.map(
-                  (tech) => tech.name
-                );
-                console.log("this is your tech: ", currentUserTech); // returns array of strings
-
-                if (
-                  allUserTech[0] === currentUserTech[0] ||
-                  allUserTech[1] === currentUserTech[1] ||
-                  allUserTech[2] === currentUserTech[2]
-                ) {
-                  console.log("holy shit finally");
-                  return (
-                    <OtherUser
-                      handle={user.handle}
-                      techInterestedIn={user.techInterestedIn}
-                      createdAt={user.createdAt}
-                      key={user.id}
-                    />
-                  );
-                } else console.log("you're an idiot");
-                /*
-
-                TODO??
-                if user.techInterestedIn === currentUser.techInterestedIn, return user 
-                
-                */
-                // if (
-                //   this.state.currentUser.techInterestedIn.includes(
-                //     user.techInterestedIn
-                //   )
-                // ) {
-
-                // console.log("this is all users tech: ", allUserTech); // works
-                // console.log("this is current user tech: ", currentUserTech); // works only when logging in
-
-                // return (
-                //   <OtherUser
-                //     handle={user.handle}
-                //     techInterestedIn={user.techInterestedIn}
-                //     createdAt={user.createdAt}
-                //     key={user.id}
-                //   />
-                // );
-                // } else {
-                //   console.log("try again loser");
-                //   return false;
-                // }
               })}
             </div>
             {/* <div className="row justify-content-center">
