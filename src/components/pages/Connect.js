@@ -1,8 +1,6 @@
 import React from "react";
 import AppTemplate from "../ui/AppTemplate";
 import OtherUser from "../ui/OtherUser";
-// import users from "../../mock-data/users";
-// import { Link } from "react-router-dom";
 import orderBy from "lodash/orderBy";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -61,21 +59,25 @@ class Connect extends React.Component {
 
         //  - filter all local users to include any user with a tech interest match
         const filteredUsers = [];
-        currentUserTechIds.forEach((id) => {
+        currentUserTechIds.forEach((currentUserTechId) => {
           users.forEach((user) => {
             user.techInterestedIn.forEach((tech) => {
-              console.log(user);
-              if (tech.id === id) {
+              // console.log(user);
+              if (tech.id === currentUserTechId) {
                 // return multiple copies of users with the same tech id
                 filteredUsers.push(user);
               }
             });
           });
         });
+        console.log(filteredUsers);
 
-        const bestMatchedUsers = filteredUsers; // order filteredUsers by most common tech interests, count how often someone is matched, order by number of times matches, most = highest, less = lowest
+        const bestMatchedUsers = filteredUsers; // order filteredUsers by most common tech interests, count how often someone is matched, order by number of times matches, most = highest, less = lowest. map through filteredUsers, get each user. if user shows up multiple times, push to top of list
         //  - set displayed users state to filtered users
-        this.setState({ displayedUsers: [...new Set(bestMatchedUsers)] });
+        this.setState({
+          displayedUsers: [...new Set(bestMatchedUsers)],
+          allUsers: orderBy(users, '["handle", "asc"]'),
+        });
         // displays users multiple times, use new set
         // this.setState({ displayedUsers: bestMatchedUsers });
 
@@ -97,8 +99,8 @@ class Connect extends React.Component {
   filterByInput() {
     const input = this.state.search.toLowerCase();
     console.log(input);
-    const copyOfAllUsers = [...this.state.allUsers];
-    const filteredUsers = copyOfAllUsers.filter((user) => {
+    const copyOfDisplayedUsers = [...this.state.displayedUsers];
+    const filteredUsers = copyOfDisplayedUsers.filter((user) => {
       if (user.handle.includes(input.toLowerCase())) {
         return true;
       } else return false;
@@ -144,6 +146,7 @@ class Connect extends React.Component {
                   id="searchFilter"
                   onChange={(e) => this.setOrder(e)}
                 >
+                  <option value='[["handle", "desc"]]'>All Users</option>
                   <option value='[["handle", "desc"]]'>
                     All Matched Users
                   </option>
