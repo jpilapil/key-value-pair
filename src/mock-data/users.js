@@ -28,7 +28,7 @@ const users = [
   },
   {
     id: "bbfc927c-f3d4-4cdd-b872-9cb233a194aa",
-    handle: "blackpink",
+    handle: "jisoo",
     email: "jisoo@gmail.com",
     password: "EEEAC4F9D754AAF4909392BCE3FF2FF3",
     gender: "female",

@@ -24,6 +24,7 @@ class Connect extends React.Component {
   async componentDidMount() {
     // componentDidMount is a lifecycle method, does not need to be called somewhere else, will always run before render
 
+    // get user signed in
     await axios
       .get(
         "https://raw.githubusercontent.com/jpilapil/key-value-pair/master/src/mock-data/user.json"
@@ -41,55 +42,80 @@ class Connect extends React.Component {
         console.log(error);
       });
 
+    // get all local users
     axios
       .get(
         "https://raw.githubusercontent.com/jpilapil/key-value-pair/master/src/mock-data/users.json"
       )
       .then((res) => {
         // handle success
-        console.log(res);
         const users = res.data;
+        this.setState({
+          displayedUsers: users,
+        });
+      });
+  }
 
-        //  - get tech interest from redux store
-        console.log(this.props.currentUser);
-        const currentUserTechIds = this.props.currentUser.techInterestedIn.map(
-          (tech) => tech.id
-        );
-        console.log("this is your tech: ", currentUserTechIds); // returns array of strings
-
-        //  - filter all local users to include any user with a tech interest match
-        const filteredUsers = [];
-        currentUserTechIds.forEach((currentUserTechId) => {
-          users.forEach((user) => {
-            user.techInterestedIn.forEach((tech) => {
-              // console.log(user);
-              if (tech.id === currentUserTechId) {
-                // return multiple copies of users with the same tech id
-                filteredUsers.push(user);
-              }
-            });
+  getMatchedUsers() {
+    if (this.state.order === '[["handle", "asc"]]') {
+      axios
+        .get(
+          "https://raw.githubusercontent.com/jpilapil/key-value-pair/master/src/mock-data/users.json"
+        )
+        .then((res) => {
+          // handle success
+          const users = res.data;
+          this.setState({
+            displayedUsers: users,
           });
         });
-        console.log(filteredUsers);
+    } else {
+      axios
+        .get(
+          "https://raw.githubusercontent.com/jpilapil/key-value-pair/master/src/mock-data/users.json"
+        )
+        .then((res) => {
+          // handle success
+          const users = res.data;
+          //  - get tech interest from redux store
+          console.log(this.props.currentUser);
+          const currentUserTechIds = this.props.currentUser.techInterestedIn.map(
+            (tech) => tech.id
+          );
+          console.log("this is your tech: ", currentUserTechIds); // returns array of strings
 
-        const bestMatchedUsers = filteredUsers; // order filteredUsers by most common tech interests, count how often someone is matched, order by number of times matches, most = highest, less = lowest. map through filteredUsers, get each user. if user shows up multiple times, push to top of list
-        //  - set displayed users state to filtered users
-        this.setState({
-          displayedUsers: [...new Set(bestMatchedUsers)],
-          allUsers: orderBy(users, '["handle", "asc"]'),
+          //  - filter all local users to include any user with a tech interest match
+          const filteredUsers = [];
+          currentUserTechIds.forEach((currentUserTechId) => {
+            users.forEach((user) => {
+              user.techInterestedIn.forEach((tech) => {
+                // console.log(user);
+                if (tech.id === currentUserTechId) {
+                  // return multiple copies of users with the same tech id
+                  filteredUsers.push(user);
+                }
+              });
+            });
+          });
+          // console.log(filteredUsers);
+
+          const bestMatchedUsers = filteredUsers;
+
+          /* TODO order filteredUsers by most common tech interests, count how often someone is matched, order by number of times matches, most = highest, less = lowest. map through filteredUsers, get each user. if user shows up multiple times, push to top of list */
+
+          //  - set displayed users state to filtered users
+          this.setState({
+            displayedUsers: [...new Set(bestMatchedUsers)],
+          });
+          // displays users multiple times, use new set
+          // this.setState({ displayedUsers: bestMatchedUsers });
+        })
+
+        .catch((error) => {
+          // handle error
+          console.log(error);
         });
-        // displays users multiple times, use new set
-        // this.setState({ displayedUsers: bestMatchedUsers });
-
-        // this.setState({
-        //   displayedUsers: orderBy(users, ["handle", "asc"]), // what is displayed based off of filter and ordering
-        //   allUsers: orderBy(users, ["handle", "asc"]), // shows all users by default
-        // });
-      })
-      .catch((error) => {
-        // handle error
-        console.log(error);
-      });
+    }
   }
 
   handleChange(e) {
@@ -106,8 +132,11 @@ class Connect extends React.Component {
       } else return false;
     });
     this.setState({ displayedUsers: filteredUsers }, () => {
-      this.setUsers();
+      // this.setUsers();
     });
+    // if (input === "") {
+    //   this.setState({ displayedUsers: this.state.displayedUsers });
+    // }
   }
 
   setOrder(e) {
@@ -119,13 +148,17 @@ class Connect extends React.Component {
   }
 
   setUsers() {
-    console.log("setting users");
+    // console.log("setting users");
     const copyOfDisplayedUsers = [...this.state.displayedUsers];
+
+    console.log("this is what youre looking for: ", this.state.order);
+
     const toJson = JSON.parse(this.state.order);
-    console.log(toJson);
+    // console.log(toJson);
     const orderedUsers = orderBy(copyOfDisplayedUsers, ...toJson);
-    console.log(orderedUsers);
+    // console.log(orderedUsers);
     this.setState({ displayedUsers: orderedUsers });
+    this.getMatchedUsers();
   }
 
   render() {
@@ -146,13 +179,13 @@ class Connect extends React.Component {
                   id="searchFilter"
                   onChange={(e) => this.setOrder(e)}
                 >
-                  <option value='[["handle", "desc"]]'>All Users</option>
+                  <option value='[["handle", "asc"]]'>All Users</option>
                   <option value='[["handle", "desc"]]'>
                     All Matched Users
                   </option>
-                  <option value='[["rating", "handle"], ["desc", "asc"]]'>
+                  {/* <option value='[["rating", "handle"], ["desc", "asc"]]'>
                     Highest Rated
-                  </option>
+                  </option> */}
                 </select>
               </div>
               <div className="col-0 mt-4 ml-auto">
