@@ -135,7 +135,7 @@ class Connect extends React.Component {
       // this.setUsers();
     });
     // if (input === "") {
-    //   this.setState({ displayedUsers: this.state.displayedUsers });
+    //   this.setState({ displayedUsers: users });
     // }
   }
 
