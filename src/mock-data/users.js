@@ -21,9 +21,9 @@ const users = [
         id: 5,
       },
       {
-        name: "Amazon Redshift",
-        popularity: 50,
-        id: 6,
+        name: "Unity",
+        popularity: 40,
+        id: 199,
       },
     ],
   },
@@ -63,9 +63,9 @@ const users = [
     rating: 3,
     techInterestedIn: [
       {
-        name: "Android",
+        name: "Ruby",
         popularity: 50,
-        id: 7,
+        id: 81,
       },
       {
         name: "Angular",
@@ -73,9 +73,9 @@ const users = [
         id: 8,
       },
       {
-        name: "Apache HBase",
+        name: "Python",
         popularity: 50,
-        id: 9,
+        id: 75,
       },
     ],
   },
